@@ -1,2 +1,10 @@
-# reimbursement-management-system
-A full-stack expense reimbursement platform with multi-level approval workflows, conditional rules, and OCR receipt scanning.
+# Reimbursement Management Website
+
+This website was created from the provided reimbursement management PDF brief.
+
+Files:
+- `index.html`
+- `styles.css`
+- `script.js`
+
+To view it, open `index.html` in a browser.

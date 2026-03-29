@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reimbursement Management</title>
+    <meta
+      name="description"
+      content="A responsive reimbursement management website built from the provided VIT brief."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="background-glow background-glow-left"></div>
+    <div class="background-glow background-glow-right"></div>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <a class="brand" href="#top">
+          <span class="brand-mark">RM</span>
+          <span class="brand-copy">
+            <strong>Reimbursement</strong>
+            <span>VIT website prototype</span>
+          </span>
+        </a>
+
+        <nav class="site-nav" aria-label="Primary">
+          <a href="#overview">Overview</a>
+          <a href="#workflow">Workflow</a>
+          <a href="#roles">Roles</a>
+          <a href="#features">Features</a>
+          <a href="#demo">Demo</a>
+        </nav>
+
+        <a class="button button-ghost" href="#demo">Open Prototype</a>
+      </header>
+
+      <main id="top">
+        <section class="hero section" id="overview">
+          <div class="hero-copy">
+            <p class="eyebrow">Built from the provided reimbursement management brief</p>
+            <h1>Expense approvals without the spreadsheet backlog.</h1>
+            <p class="hero-text">
+              This concept website presents a reimbursement platform with employee submissions,
+              multi-level approval flows, hybrid conditional rules, OCR receipt capture, and
+              company-level currency control.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button" href="#workflow">See workflow</a>
+              <a class="button button-ghost" href="#roles">Explore permissions</a>
+            </div>
+
+            <div class="hero-stats">
+              <article class="stat-card">
+                <strong>Auto setup</strong>
+                <span>Company and admin account created on first signup.</span>
+              </article>
+              <article class="stat-card">
+                <strong>Hybrid approvals</strong>
+                <span>Sequence-based review plus percentage and specific approver rules.</span>
+              </article>
+              <article class="stat-card">
+                <strong>OCR intake</strong>
+                <span>Receipts convert into amount, date, category, and line-item details.</span>
+              </article>
+            </div>
+          </div>
+
+          <div class="hero-preview card">
+            <div class="preview-header">
+              <div class="preview-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <div class="preview-tag">Live approval cockpit</div>
+            </div>
+
+            <div class="preview-grid">
+              <article class="mini-panel accent-panel">
+                <p class="mini-label">Expense submitted</p>
+                <strong>USD 214.00</strong>
+                <span>Dinner with client, scanned via OCR</span>
+              </article>
+
+              <article class="mini-panel">
+                <p class="mini-label">Company currency</p>
+                <strong>INR 17,850</strong>
+                <span>Auto-converted for manager visibility</span>
+              </article>
+
+              <article class="mini-panel wide-panel">
+                <div class="panel-heading">
+                  <div>
+                    <p class="mini-label">Approval ladder</p>
+                    <strong>Manager -> Finance -> Director</strong>
+                  </div>
+                  <span class="status-pill">Step 2 active</span>
+                </div>
+
+                <div class="approval-rail" aria-hidden="true">
+                  <span class="rail-step rail-complete">Manager</span>
+                  <span class="rail-step rail-current">Finance</span>
+                  <span class="rail-step">Director</span>
+                </div>
+              </article>
+
+              <article class="mini-panel">
+                <p class="mini-label">Rule trigger</p>
+                <strong>60% OR CFO</strong>
+                <span>Conditional auto-approval supported</span>
+              </article>
+
+              <article class="mini-panel">
+                <p class="mini-label">Pending queue</p>
+                <strong>18 claims</strong>
+                <span>Comments and overrides tracked in audit log</span>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-heading">
+            <p class="eyebrow">Problem statement</p>
+            <h2>Manual reimbursements are slow, opaque, and easy to break.</h2>
+          </div>
+
+          <div class="pain-grid">
+            <article class="card pain-card">
+              <h3>Thresholds are hard to enforce</h3>
+              <p>
+                Finance teams need rules that shift review paths based on value, role, and policy
+                without reworking the process every time.
+              </p>
+            </article>
+            <article class="card pain-card">
+              <h3>Approvals stall between teams</h3>
+              <p>
+                Requests often disappear in email threads because there is no single queue for
+                managers, finance, and directors.
+              </p>
+            </article>
+            <article class="card pain-card">
+              <h3>Receipts and currencies add friction</h3>
+              <p>
+                Employees spend time typing line items while approvers struggle to compare costs in
+                the company default currency.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="workflow">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">Workflow engine</p>
+              <h2>Sequential approvals with conditional decision logic.</h2>
+            </div>
+            <p class="section-note">
+              The expense moves to the next approver only after the current approver approves or
+              rejects it.
+            </p>
+          </div>
+
+          <div class="workflow-grid">
+            <article class="card timeline-card">
+              <h3>Core journey</h3>
+              <ol class="timeline">
+                <li>
+                  <strong>1. Signup and company creation</strong>
+                  <span>A company and admin user are created with the selected country currency.</span>
+                </li>
+                <li>
+                  <strong>2. Role assignment</strong>
+                  <span>Admin creates employees and managers, then maps manager relationships.</span>
+                </li>
+                <li>
+                  <strong>3. Expense submission</strong>
+                  <span>Employees submit amount, category, description, date, and receipt.</span>
+                </li>
+                <li>
+                  <strong>4. Ordered approvals</strong>
+                  <span>Manager, finance, and director approve in the configured sequence.</span>
+                </li>
+                <li>
+                  <strong>5. Resolution and history</strong>
+                  <span>Approved and rejected claims remain visible in the employee history.</span>
+                </li>
+              </ol>
+            </article>
+
+            <article class="card simulator-card">
+              <div class="simulator-copy">
+                <p class="eyebrow">Interactive rule simulator</p>
+                <h3>Test the hybrid approval rule</h3>
+                <p>
+                  The brief allows both percentage approval and specific approver shortcuts like CFO
+                  approval. This demo shows the result logic.
+                </p>
+              </div>
+
+              <div class="simulator-panel">
+                <label for="approvalRange">Approvers who approved</label>
+                <input id="approvalRange" type="range" min="0" max="5" value="3" />
+                <div class="range-meta">
+                  <span id="approvalCount">3 of 5 approvers</span>
+                  <span id="approvalPercent">60%</span>
+                </div>
+
+                <label class="checkbox-row" for="cfoApproval">
+                  <input id="cfoApproval" type="checkbox" />
+                  <span>CFO approves this request</span>
+                </label>
+
+                <div class="sim-result" id="ruleResult" aria-live="polite"></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="roles">
+          <div class="section-heading">
+            <p class="eyebrow">Role permissions</p>
+            <h2>Each role sees a different control surface.</h2>
+          </div>
+
+          <div class="role-tabs" role="tablist" aria-label="Role permissions">
+            <button class="role-tab is-active" data-role="admin" type="button" role="tab">
+              Admin
+            </button>
+            <button class="role-tab" data-role="manager" type="button" role="tab">
+              Manager
+            </button>
+            <button class="role-tab" data-role="employee" type="button" role="tab">
+              Employee
+            </button>
+          </div>
+
+          <div class="role-panels">
+            <article class="card role-panel is-active" data-role-panel="admin">
+              <div>
+                <p class="eyebrow">Admin control</p>
+                <h3>Configure the system</h3>
+              </div>
+              <ul>
+                <li>Create the company automatically on first signup.</li>
+                <li>Manage users, roles, and reporting relationships.</li>
+                <li>Define ordered approvers and conditional approval rules.</li>
+                <li>View all expenses and override decisions when needed.</li>
+              </ul>
+            </article>
+
+            <article class="card role-panel" data-role-panel="manager">
+              <div>
+                <p class="eyebrow">Manager workspace</p>
+                <h3>Review and escalate</h3>
+              </div>
+              <ul>
+                <li>See expenses waiting for approval in the default company currency.</li>
+                <li>Approve or reject with comments that remain visible in the audit trail.</li>
+                <li>View team expenses and escalate based on approval rules.</li>
+                <li>Act as the first approver when manager approval is required.</li>
+              </ul>
+            </article>
+
+            <article class="card role-panel" data-role-panel="employee">
+              <div>
+                <p class="eyebrow">Employee view</p>
+                <h3>Submit once, track clearly</h3>
+              </div>
+              <ul>
+                <li>Submit amount, category, description, date, and receipt details.</li>
+                <li>Enter expense values in a currency different from the company default.</li>
+                <li>Use OCR to auto-fill receipt fields and line items.</li>
+                <li>Track history and see approved or rejected requests in one place.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="features">
+          <div class="section-heading">
+            <p class="eyebrow">Key features</p>
+            <h2>The product brief translated into interface moments.</h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="card feature-card">
+              <span class="feature-number">01</span>
+              <h3>OCR-powered receipt capture</h3>
+              <p>
+                Extract merchant name, line items, amount, date, and category directly from a
+                scanned bill.
+              </p>
+            </article>
+            <article class="card feature-card">
+              <span class="feature-number">02</span>
+              <h3>Country-aware currency defaults</h3>
+              <p>
+                Company currency is set during onboarding, while employee claims can still arrive in
+                other currencies.
+              </p>
+            </article>
+            <article class="card feature-card">
+              <span class="feature-number">03</span>
+              <h3>Multi-level approval sequences</h3>
+              <p>
+                Admins can define who approves first, second, and third so every handoff is
+                traceable.
+              </p>
+            </article>
+            <article class="card feature-card">
+              <span class="feature-number">04</span>
+              <h3>Conditional approval rules</h3>
+              <p>
+                Percentage thresholds, specific approvers like CFO, or hybrid rules can approve an
+                expense automatically.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="demo">
+          <div class="section-heading split-heading">
+            <div>
+              <p class="eyebrow">Product demo</p>
+              <h2>A screen-ready concept for the reimbursement platform.</h2>
+            </div>
+            <p class="section-note">
+              The cards below simulate what employees, managers, and admins would see in the app.
+            </p>
+          </div>
+
+          <div class="demo-grid">
+            <article class="card demo-card form-card">
+              <div class="card-topline">
+                <h3>Submit expense</h3>
+                <span class="status-pill">Employee</span>
+              </div>
+
+              <div class="field-grid">
+                <div class="field">
+                  <span>Amount</span>
+                  <strong>214.00 USD</strong>
+                </div>
+                <div class="field">
+                  <span>Date</span>
+                  <strong>28 Mar 2026</strong>
+                </div>
+                <div class="field">
+                  <span>Category</span>
+                  <strong>Client meal</strong>
+                </div>
+                <div class="field">
+                  <span>Receipt</span>
+                  <strong>Scanned with OCR</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="card demo-card queue-card">
+              <div class="card-topline">
+                <h3>Approval queue</h3>
+                <span class="status-pill">Manager</span>
+              </div>
+
+              <div class="queue-list">
+                <div class="queue-row">
+                  <div>
+                    <strong>Travel reimbursement</strong>
+                    <span>Converted to INR 17,850</span>
+                  </div>
+                  <em>Needs comment</em>
+                </div>
+                <div class="queue-row">
+                  <div>
+                    <strong>Team dinner</strong>
+                    <span>Waiting for finance after manager approval</span>
+                  </div>
+                  <em>Forwarded</em>
+                </div>
+                <div class="queue-row">
+                  <div>
+                    <strong>Conference registration</strong>
+                    <span>CFO shortcut rule triggered</span>
+                  </div>
+                  <em>Approved</em>
+                </div>
+              </div>
+            </article>
+
+            <article class="card demo-card receipt-card">
+              <div class="card-topline">
+                <h3>OCR receipt output</h3>
+                <span class="status-pill">Automation</span>
+              </div>
+
+              <ul class="receipt-lines">
+                <li><span>Merchant</span><strong>South Harbor Bistro</strong></li>
+                <li><span>Date</span><strong>28 Mar 2026</strong></li>
+                <li><span>Subtotal</span><strong>186.00 USD</strong></li>
+                <li><span>Tax</span><strong>28.00 USD</strong></li>
+                <li><span>Expense type</span><strong>Meals & entertainment</strong></li>
+              </ul>
+            </article>
+
+            <article class="card demo-card activity-card">
+              <div class="card-topline">
+                <h3>Audit and history</h3>
+                <span class="status-pill">Admin</span>
+              </div>
+
+              <div class="activity-stream">
+                <div class="activity-row">
+                  <strong>09:10</strong>
+                  <p>Employee submitted claim with scanned receipt.</p>
+                </div>
+                <div class="activity-row">
+                  <strong>09:25</strong>
+                  <p>Manager approved after INR conversion review.</p>
+                </div>
+                <div class="activity-row">
+                  <strong>09:33</strong>
+                  <p>Finance queued the claim for director sign-off.</p>
+                </div>
+                <div class="activity-row">
+                  <strong>09:40</strong>
+                  <p>Director rejected with comment and returned it to employee history.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <p>
+          Website concept based on the provided reimbursement management PDF and prepared in
+          <code>C:\VIT Website</code>.
+        </p>
+      </footer>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
