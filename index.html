@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reimbursement Management App</title>
+    <meta
+      name="description"
+      content="A functional reimbursement management app with authentication, approvals, role-based dashboards, OCR mock parsing, and local persistence."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb bg-orb-left"></div>
+    <div class="bg-orb bg-orb-right"></div>
+
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand">
+          <span class="brand-mark">RM</span>
+          <div class="brand-copy">
+            <strong>Reimbursement Management</strong>
+            <span>SQLite-backed full-stack platform</span>
+          </div>
+        </div>
+
+        <nav class="header-actions">
+          <button class="ghost-button" id="loadDemoBtn" type="button">Load Demo Workspace</button>
+          <button class="ghost-button danger-button" id="resetWorkspaceBtn" type="button">
+            Reset Workspace
+          </button>
+          <button class="primary-button is-hidden" id="logoutBtn" type="button">Logout</button>
+        </nav>
+      </header>
+
+      <main class="main-layout">
+        <section class="hero-panel card">
+          <div class="hero-copy">
+            <p class="eyebrow">Now upgraded from a static concept into a usable app</p>
+            <h1>Manage signups, expense claims, and approval workflows in one place.</h1>
+            <p class="hero-text">
+              This build now includes a real backend, database persistence, role-based dashboards,
+              manager relationships, expense submission, sequential approvals, hybrid rules, and a
+              mock OCR flow for receipt capture.
+            </p>
+          </div>
+
+          <div class="hero-points">
+            <article class="mini-card">
+              <strong>First signup creates company + admin</strong>
+              <span>Country selection automatically sets the default company currency.</span>
+            </article>
+            <article class="mini-card">
+              <strong>Role-specific dashboards</strong>
+              <span>Admin, manager, and employee each get their own API-driven workspace.</span>
+            </article>
+            <article class="mini-card">
+              <strong>Approval engine</strong>
+              <span>Supports manager-first, ordered approvers, hybrid rules, and admin overrides.</span>
+            </article>
+          </div>
+        </section>
+
+        <div class="notice-bar is-hidden" id="noticeBar"></div>
+
+        <section class="auth-shell" id="authShell">
+          <div class="card auth-card">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow">Access</p>
+                <h2>Sign in</h2>
+              </div>
+              <button class="text-button" id="showSignupBtn" type="button">Need an account?</button>
+            </div>
+
+            <form class="form-grid" id="signinForm">
+              <label class="field">
+                <span>Email</span>
+                <input id="signinEmail" name="email" type="email" placeholder="admin@company.com" required />
+              </label>
+
+              <label class="field">
+                <span>Password</span>
+                <input id="signinPassword" name="password" type="password" placeholder="Enter password" required />
+              </label>
+
+              <button class="primary-button" type="submit">Sign in</button>
+            </form>
+
+            <div class="demo-note">
+              <strong>Quick test:</strong>
+              <span>Use "Load Demo Workspace" to create demo accounts and sample expenses.</span>
+            </div>
+          </div>
+
+          <div class="card auth-card">
+            <div class="card-header">
+              <div>
+                <p class="eyebrow">Setup</p>
+                <h2>Create company</h2>
+              </div>
+              <button class="text-button" id="showSigninBtn" type="button">Already have an account?</button>
+            </div>
+
+            <form class="form-grid" id="signupForm">
+              <label class="field">
+                <span>Admin name</span>
+                <input id="signupName" name="name" type="text" placeholder="Aarav Mehta" required />
+              </label>
+
+              <label class="field">
+                <span>Admin email</span>
+                <input id="signupEmail" name="email" type="email" placeholder="aarav@company.com" required />
+              </label>
+
+              <label class="field">
+                <span>Password</span>
+                <input id="signupPassword" name="password" type="password" placeholder="Create password" required />
+              </label>
+
+              <label class="field">
+                <span>Company name</span>
+                <input id="companyName" name="companyName" type="text" placeholder="Vertex Systems" required />
+              </label>
+
+              <label class="field">
+                <span>Country</span>
+                <select id="countrySelect" name="countryCode" required></select>
+              </label>
+
+              <label class="field">
+                <span>Default currency</span>
+                <input id="currencyDisplay" name="currency" type="text" readonly />
+              </label>
+
+              <button class="primary-button" type="submit">Create company and admin</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="dashboard-shell is-hidden" id="dashboardShell">
+          <div class="dashboard-top">
+            <div>
+              <p class="eyebrow">Workspace</p>
+              <h2 id="dashboardTitle">Dashboard</h2>
+              <p class="dashboard-subtitle" id="dashboardSubtitle"></p>
+            </div>
+
+            <div class="badge-row">
+              <span class="info-pill" id="companyBadge"></span>
+              <span class="info-pill" id="roleBadge"></span>
+            </div>
+          </div>
+
+          <div class="metrics-grid" id="metricsGrid"></div>
+          <div class="workspace-grid" id="workspaceGrid"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
